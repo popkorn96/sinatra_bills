@@ -1,0 +1,46 @@
+
+<html>
+<head>
+   <style>
+   {
+       box-sizing: border-box;
+   }
+   /* Set additional styling options for the columns */
+   .column {
+   float: left;
+   }
+
+   /* Set width length for the left, right and middle columns */
+   .left {
+   width: 75%;
+   }
+   
+   .right {
+   width: 25%;
+   }
+
+   .row:after {
+   content: "";
+   display: table;
+   clear: both;
+   }
+   </style>
+</head>
+<body>
+   <div class="row">
+       <div class="column left" style="background-color:#FFFFFF;">
+       <h2>About the Bills App:</h2>
+       <h3><i>This app is meant to help users organize their bill payments. </i></h3>
+       <h3><i>They are able to build their bills with a name, remaining balance, amount due, due date and category. </i></h3>  
+       <h3><i>Categories include housing, credit cards, medical and more.  </i></h3>
+       <h3><i>There is also a calendar feature that users can use as reference when planning their upcoming payments. </i></h3> 
+       </div>
+       <div class="column right" style="background-color:#FFFFFF;">
+       <h2>Menu:</h2>
+       <p><a href="/signup">Sign Up Here!</a><br><br>
+        <a href="/login">Log In Here!</a></p>
+        <a href="/index">Back</a></p>
+       </div>
+    </div>
+    </body>
+   </html>

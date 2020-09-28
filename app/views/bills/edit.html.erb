@@ -1,0 +1,75 @@
+<html>
+ <head>
+    <style>
+    {
+        box-sizing: border-box;
+    }
+    /* Set additional styling options for the columns */
+    .column {
+    float: left;
+    }
+
+    /* Set width length for the left, right and middle columns */
+    .left {
+    width: 20%;
+    }
+
+    .right {
+    width: 80%;
+    }
+    
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+ </head>
+
+ <body>
+    <div class="row">
+        <div class="column left" style="background-color:#FFFFFF;">
+            <h2>Menu:</h2>
+            <p><a href="/bills">  All Bills</a><br><br>
+            <a href="/bills/new">  New Bill</a><br><br>
+            <a href="/user/<%= current_user.id %>/calendar">  2020/2021 Calendar</a><br><br><br>
+            <a href="/logout">  Log Out</a><br><br>
+            </ul></p>
+        </div>
+        <div class="column right" style="background-color:#FFFFFF;">
+        <h2>Editing: <a href="/bills/<%= @bill.id %>"><%= @bill.name %></h2></a>
+
+        <form method="POST" action="/bills/<%= @bill.id %>">
+          <input id="hidden" type="hidden" name="_method" value="patch">
+        
+          <label>Name:</label><br>
+          <input type="text" name="name" id="name" value="<%= @bill.name %>"><br><br>
+        
+          <label>Remaining Balance:</label><br>
+          <input type="decimal" name="remaining_balance" id="remaining_balance" value="<%= @bill.remaining_balance %>"><br><br>
+        
+          <label>Amount Due:</label><br>
+          <input type="decimal" name="amount_due" id="amount_due" value="<%= @bill.amount_due %>"><br><br>
+        
+          <label>Due Date:</label><br>
+          <input type="date" name="due_date" id="due_date" value="<%= @bill.due_date %>"><br><br>
+        
+          <p>Type of Bill:</p>
+          <input type="radio" name="category" id="housing" value="Housing">  Housing</input><br>
+          <input type="radio" name="category" id="utilities" value="Utilities">  Utilities</input><br>
+          <input type="radio" name="category" id="private_loan" value="Private Loan">  Private Loan</input><br>
+          <input type="radio" name="category" id="irs_debt" value="IRS Debt">  IRS Debt</input><br>
+          <input type="radio" name="category" id="medical" value="Medical">  Medical</input><br>
+          <input type="radio" name="category" id="credit_card" value="Credit Card">  Credit Card</input><br>
+          <input type="radio" name="category" id="child_support" value="Child Support">  Child Support</input><br>
+          <input type="radio" name="category" id="other" value="Other">  Other</input>
+        <br><br><br>
+        
+          <input type="submit" value="Sumbit <%= @bill.name %>'s Edit">
+        </form>
+        </div>
+    </div>
+ </body>
+ </html>
+
+

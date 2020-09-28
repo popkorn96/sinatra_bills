@@ -1,0 +1,54 @@
+
+<html>
+<head>
+   <style>
+   {
+       box-sizing: border-box;
+   }
+   /* Set additional styling options for the columns */
+   .column {
+   float: left;
+   }
+
+   /* Set width length for the left, right and middle columns */
+   .left {
+   width: 75%;
+   }
+   
+   .right {
+   width: 25%;
+   }
+
+   .row:after {
+   content: "";
+   display: table;
+   clear: both;
+   }
+   </style>
+</head>
+<body>
+   <div class="row">
+       <div class="column left" style="background-color:#FFFFFF;">
+       <h2>Bill: <%= @bill.name %></h2>
+       <strong> Category: <%= @bill.category %></strong><br><br><br>
+       <ul>
+       <li>Remaining Balance: $<%= "%.2f" % @bill.remaining_balance %><br><br>
+       <li>Amount Due: <mark>$<%= "%.2f" % @bill.amount_due %></mark><br><br>
+       <li>Due Date: <%= @bill.due_date.strftime("%A, %b. %-d, %Y") %><br><br>
+       <br><br><br>
+       </ul>
+       </div>
+       <div class="column right" style="background-color:#FFFFFF;">
+       <h2>Options:</h2>
+       <ul>
+       <a href="/bills">Show All Bills</a><br><br>
+       <a href="/bills/<%= @bill.id %>/edit">Update This Bill</a><br><br>
+       <form action="/bills/<%=@bill.id%>/delete" method="post">
+       <input type="hidden" name="_method" value="delete">
+       <input type="submit" value="Delete This Bill">
+       </form><br>
+       </ul>
+       </div>
+    </div>
+    </body>
+   </html>

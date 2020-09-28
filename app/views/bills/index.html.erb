@@ -1,0 +1,56 @@
+<html>
+ <head>
+    <style>
+    {
+        box-sizing: border-box;
+    }
+    /* Set additional styling options for the columns */
+    .column {
+    float: left;
+    }
+
+    /* Set width length for the left, right and middle columns */
+    .left {
+    width: 20%;
+    }
+
+    .right {
+    width: 80%;
+    }
+    
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+ </head>
+
+ <body>
+    <div class="row">
+        <div class="column left" style="background-color:#FFFFFF;">
+            <h2>Menu:</h2>
+            <p><a href="/bills">  All Bills</a><br><br>
+            <a href="/bills/new">  New Bill</a><br><br>
+            <a href="/user/<%= current_user.id %>/calendar">  2020/2021 Calendar</a><br><br><br>
+            <a href="/logout">  Log Out</a><br><br>
+            
+            </ul></p>
+        </div>
+        <div class="column right" style="background-color:#FFFFFF;">
+            <h2>Welcome, <%= current_user.username %></h2>
+            <% if @bills.empty? %>
+            <p><i>You currently don't have any bills... </i></p<br><br><br><br><br><br>
+            <p><strong>==> Click <a href="/bills/new">here</a> to add a new bill<strong></p>
+            <% else %>
+            <p><i> Choose a bill to see more information </i></p><br><br>
+            <% @bills.each do |bill| %>
+              <h3> Bill: <a href="/bills/<%= bill.id %>"><%= bill.name %></h3></a>
+              <p> Date Due: <strong><%= bill.due_date.strftime("%A, %b. %-d, %Y") %></strong></p>
+            <% end %>
+            <br><br>
+            <% end %>
+        </div>
+    </div>
+ </body>
+ </html>
